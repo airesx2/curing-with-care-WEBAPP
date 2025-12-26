@@ -1,3 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Your existing CSS below */
+.App {
+  text-align: center;
+  background-color: #000;
+  min-height: 100vh;
+}
+
+/* ... rest of your CSS ... */
+
 .App {
   text-align: center;
 }
