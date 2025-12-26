@@ -3,6 +3,13 @@ A React-based digital publication platform for a student-run online magazine ena
 
 ---
 
+## Contributors
+* Arie L
+* Nithya K
+* Priya P
+
+---
+
 ## Key Features
 * **Article publishing**: Publish long-form articles with titles, authors, publication dates, cover images, and rich text content
 * **Content organization**: Organize articles into easily-navigable categories and improve user experience with advanced sorting and browsing capabilities
