@@ -3,6 +3,7 @@ import "./App.css"
 import { SearchBar } from "./components/SearchBar"
 import { LoginCard } from "./components/LoginCard" 
 import { DarkModeToggle } from "./components/DarkModeToggle"
+import { FeaturedArticle } from "./components/FeaturedArticle"
 
 class LambdaDemo extends Component {
   constructor(props) {
@@ -42,15 +43,19 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <LoginCard />  {/* Changed this line */}
+      
 
         <header className="App-header">
+          <LoginCard /> 
+          <FeaturedArticle />
           <p>
             Hi Team Awesome Genuises!
           </p>
           <DarkModeToggle />
           <SearchBar onSearch={this.handleSearch} className="w-64" />
+          
           <LambdaDemo />
+          
         </header>
       </div>
     )
