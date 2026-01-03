@@ -4,6 +4,7 @@ import { SearchBar } from "./components/SearchBar"
 import { LoginCard } from "./components/LoginCard" 
 import { DarkModeToggle } from "./components/DarkModeToggle"
 import { FeaturedArticle } from "./components/FeaturedArticle"
+import { Tabs } from "@radix-ui/themes";
 
 class LambdaDemo extends Component {
   constructor(props) {
@@ -46,13 +47,26 @@ class App extends Component {
         
 
         <header className="App-header">
-          <LoginCard /> 
-          <FeaturedArticle />
+          <Tabs.Root defaultValue="account">
+            <Tabs.List>
+              <Tabs.Trigger value="account">Account</Tabs.Trigger>
+              <Tabs.Trigger value="documents">Documents</Tabs.Trigger>
+              <Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+            </Tabs.List>
+            <Tabs.Content value="account">
+              <LoginCard />
+            </Tabs.Content>
+            <Tabs.Content value="documents">
+              <FeaturedArticle />
+            </Tabs.Content>
+            <Tabs.Content value="settings">
+              <DarkModeToggle />
+              <SearchBar onSearch={this.handleSearch} className="w-64" />
+            </Tabs.Content>
+          </Tabs.Root>
           <p>
             Hi Team Awesome Genuises!
           </p>
-          <DarkModeToggle />
-          <SearchBar onSearch={this.handleSearch} className="w-64" />
           
           <LambdaDemo />
           
