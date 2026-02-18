@@ -1,79 +1,43 @@
-import React, { Component } from "react"
-import "./App.css"
-import { SearchBar } from "./components/SearchBar"
-import { LoginCard } from "./components/LoginCard" 
-import { DarkModeToggle } from "./components/DarkModeToggle"
-import { FeaturedArticle } from "./components/FeaturedArticle"
-import { Tabs } from "@radix-ui/themes";
+// src/App.jsx
+import React, { Component } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-class LambdaDemo extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { loading: false, msg: null }
-  }
-
-  handleClick = api => e => {
-    e.preventDefault()
-
-    this.setState({ loading: true })
-    fetch("/.netlify/functions/" + api)
-      .then(response => response.json())
-      .then(json => this.setState({ loading: false, msg: json.msg }))
-  }
-
-  render() {
-    const { loading, msg } = this.state
-
-    return (
-      <p>
-        <button onClick={this.handleClick("hello")}>{loading ? "Loading..." : "Goodluck"}</button>
-        <button onClick={this.handleClick("async-dadjoke")}>{loading ? "Loading..." : " You gyatt this"}</button>
-        <br />
-        <span>{msg}</span>
-      </p>
-    )
-  }
-}
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import ArticlePage from "./pages/ArticlePage";
+import SectionPage from "./pages/SectionPage";
+// import WriterPage if you build it later
 
 class App extends Component {
-  handleSearch = (query) => {
-    console.log('Search query:', query)
-    // search logic here
-  }
-
   render() {
     return (
-      <div className="App">
-        
+      <Router>
+        <div className="App bg-green-50/50 min-h-screen">
+          {/* Navbar */}
+          <Navbar />
 
-        <header className="App-header">
-          <Tabs.Root defaultValue="account">
-            <Tabs.List>
-              <Tabs.Trigger value="account">Account</Tabs.Trigger>
-              <Tabs.Trigger value="documents">Documents</Tabs.Trigger>
-              <Tabs.Trigger value="settings">Settings</Tabs.Trigger>
-            </Tabs.List>
-            <Tabs.Content value="account">
-              <LoginCard />
-            </Tabs.Content>
-            <Tabs.Content value="documents">
-              <FeaturedArticle />
-            </Tabs.Content>
-            <Tabs.Content value="settings">
-              <DarkModeToggle />
-              <SearchBar onSearch={this.handleSearch} className="w-64" />
-            </Tabs.Content>
-          </Tabs.Root>
-          <p>
-            Hi Team Awesome Genuises!
-          </p>
-          
-          <LambdaDemo />
-          
-        </header>
-      </div>
-    )
+          {/* Routes */}
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/article/:id" element={<ArticlePage />} />
+            <Route path="/section/:section" element={<SectionPage />} />
+            {/* Optional Writer Page */}
+            {/* <Route path="/writer/:authorId" element={<WriterPage />} /> */}
+
+            {/* Fallback */}
+            <Route
+              path="*"
+              element={
+                <div className="min-h-screen flex items-center justify-center text-2xl font-semibold">
+                  Page Not Found
+                </div>
+              }
+            />
+          </Routes>
+        </div>
+      </Router>
+    );
   }
 }
 
-export default App
+export default App;
