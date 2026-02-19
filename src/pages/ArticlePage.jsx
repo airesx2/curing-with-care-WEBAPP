@@ -1,26 +1,46 @@
 import { useParams, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { doc, getDoc, updateDoc, increment } from "firebase/firestore";
+import { db } from "../lib/firebase";
 import { Heart } from "lucide-react";
 
 export default function ArticlePage() {
   const { id } = useParams();
+  const [article, setArticle] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const article = {
-    id,
-    title: "Understanding Immunotherapy",
-    author_id: "abc123",
-    author_name: "Jane Doe",
-    publish_date: "March 26, 2026",
-    read_time: "5 min read",
-    views: 128,
-    image_url: "",
-    content: `
-Immunotherapy is a groundbreaking approach to cancer treatment that empowers the immune system to recognize and destroy cancer cells more effectively.
+  useEffect(() => {
+    async function fetchArticle() {
+      try {
+        const docRef = doc(db, "articles", id);
+        const snapshot = await getDoc(docRef);
 
-Unlike chemotherapy, which directly attacks cancer cells, immunotherapy enhances the body's natural defenses.
+        if (snapshot.exists()) {
+          const data = snapshot.data();
+          setArticle({ id: snapshot.id, ...data });
 
-Research continues to evolve rapidly in this field, offering hope for more personalized and targeted therapies.
-    `
-  };
+          // 🔥 increment views
+          await updateDoc(docRef, {
+            views: increment(1),
+          });
+        }
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchArticle();
+  }, [id]);
+
+  if (loading) {
+    return <div className="p-10">Loading...</div>;
+  }
+
+  if (!article) {
+    return <div className="p-10">Article not found</div>;
+  }
 
   return (
     <div className="min-h-screen bg-green-50/50 px-6 py-16">
@@ -57,14 +77,14 @@ Research continues to evolve rapidly in this field, offering hope for more perso
 
         {/* Article Content */}
         <div className="space-y-4 text-[1.05rem] leading-7 font-serif text-foreground">
-          {article.content.split("\n").map((paragraph, index) => (
+          {article.content?.split("\n").map((paragraph, index) => (
             <p key={index}>{paragraph}</p>
           ))}
         </div>
 
         {/* Bottom Section */}
         <div className="mt-12 pt-6 border-t border-black/10 flex items-center justify-between text-sm text-muted-foreground font-serif">
-          <span>{article.views} views</span>
+          <span>{article.views || 0} views</span>
 
           <button className="flex items-center gap-2 hover:text-red-500 transition">
             <Heart size={18} />

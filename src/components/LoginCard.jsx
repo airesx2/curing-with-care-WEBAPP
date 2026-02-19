@@ -1,3 +1,8 @@
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
+import { auth } from "../lib/firebase"
+
 import { Button } from "./ui/button"
 import {
   Card,
@@ -11,6 +16,30 @@ import { Input } from "./ui/input"
 import { Label } from "./ui/label"
 
 export function LoginCard() {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const navigate = useNavigate()
+
+  const handleLogin = async (e) => {
+    e.preventDefault()
+    try {
+      await signInWithEmailAndPassword(auth, email, password)
+      navigate("/editor")
+    } catch (error) {
+      alert(error.message)
+    }
+  }
+
+  const handleGoogleLogin = async () => {
+    try {
+      const provider = new GoogleAuthProvider()
+      await signInWithPopup(auth, provider)
+      navigate("/editor")
+    } catch (error) {
+      alert(error.message)
+    }
+  }
+
   return (
     <Card className="w-full max-w-sm">
       <CardHeader>
@@ -24,8 +53,9 @@ export function LoginCard() {
           <Button variant="link">Sign Up</Button>
         </div>
       </CardHeader>
+
       <CardContent>
-        <form>
+        <form onSubmit={handleLogin}>
           <div className="flex flex-col gap-6">
             <div className="grid gap-2">
               <Label htmlFor="email">Email</Label>
@@ -34,28 +64,44 @@ export function LoginCard() {
                 type="email"
                 placeholder="m@example.com"
                 required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
+
             <div className="grid gap-2">
               <div className="flex items-center">
                 <Label htmlFor="password">Password</Label>
-                
-                <a href="#"
+
+                <a
+                  href="#"
                   className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
                 >
                   Forgot your password?
                 </a>
               </div>
-              <Input id="password" type="password" required />
+
+              <Input
+                id="password"
+                type="password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </div>
           </div>
+
+          {/* hidden submit so Enter works */}
+          <button type="submit" className="hidden"></button>
         </form>
       </CardContent>
+
       <CardFooter className="flex flex-col gap-2">
-        <Button type="submit" className="w-full">
+        <Button onClick={handleLogin} className="w-full">
           Login
         </Button>
-        <Button variant="outline" className="w-full">
+
+        <Button variant="outline" className="w-full" onClick={handleGoogleLogin}>
           Login with Google
         </Button>
       </CardFooter>

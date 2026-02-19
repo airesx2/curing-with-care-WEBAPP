@@ -3,28 +3,37 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
+import ProtectedRoute from "./components/ProtectedRoute";
+
 import Home from "./pages/Home";
 import ArticlePage from "./pages/ArticlePage";
 import SectionPage from "./pages/SectionPage";
-// import WriterPage if you build it later
+import EditorDashboard from "./pages/EditorDashboard";
+import LoginPage from "./pages/LoginPage";
 
 class App extends Component {
   render() {
     return (
       <Router>
         <div className="App bg-green-50/50 min-h-screen">
-          {/* Navbar */}
           <Navbar />
 
-          {/* Routes */}
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/article/:id" element={<ArticlePage />} />
             <Route path="/section/:section" element={<SectionPage />} />
-            {/* Optional Writer Page */}
-            {/* <Route path="/writer/:authorId" element={<WriterPage />} /> */}
+            <Route path="/login" element={<LoginPage />} />
 
-            {/* Fallback */}
+            {/* Protected Editor Route */}
+            <Route
+              path="/editor"
+              element={
+                <ProtectedRoute>
+                  <EditorDashboard />
+                </ProtectedRoute>
+              }
+            />
+
             <Route
               path="*"
               element={
