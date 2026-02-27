@@ -34,7 +34,7 @@ export default function EditorDashboard() {
   const [wordCount, setWordCount] = useState(0)
 
   // Only these emails can access editor
-  const allowedEditors = ["editor1@example.com", "editor2@example.com", "quark1594@gmail.com"]
+  const allowedEditors = ["quark1594@gmail.com", "creepyspamk@gmail.com", "esmoon23@gmail.com", "priyaprabhudgp@gmail.com"]
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (u) => {
