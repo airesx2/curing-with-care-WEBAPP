@@ -56,7 +56,7 @@ export default function Navbar() {
           ))}
 
           {/* Profile Icon */}
-          <div className="relative">
+          <div className="relative flex items-center">
             <button
               onClick={() => setOpen(!open)}
               className="text-green-900 hover:text-green-700 transition"
@@ -65,7 +65,7 @@ export default function Navbar() {
             </button>
 
             {open && (
-              <div className="absolute right-0 mt-3 w-40 bg-white border border-black/5 rounded-md shadow-sm py-2 text-sm font-light tracking-wide uppercase text-green-900">
+              <div className="absolute right-0 top-full mt-1 w-52 bg-white border border-black/5 rounded-md shadow-sm py-2 text-sm font-light tracking-wide uppercase text-green-900">
                 
                 {!user ? (
                   <button
@@ -73,9 +73,11 @@ export default function Navbar() {
                       navigate("/login");
                       setOpen(false);
                     }}
-                    className="block w-full text-left px-4 py-2 hover:bg-green-50/60"
+                    style={{ paddingLeft: "32px", display: "block", width: "100%", textAlign: "left" }}
+                    className="py-2 hover:bg-green-50/60"
+                    
                   >
-                    Login
+                       Login
                   </button>
                 ) : (
                   <>
@@ -84,14 +86,16 @@ export default function Navbar() {
                         navigate("/editor");
                         setOpen(false);
                       }}
-                      className="block w-full text-left px-4 py-2 hover:bg-green-50/60"
+                      style={{ paddingLeft: "32px", display: "block", width: "100%", textAlign: "left" }}
+                      className="py-2 hover:bg-green-50/60"
                     >
-                      Editor Dashboard
+                         Editor Dashboard
                     </button>
-
+                    <hr className="border-black/5 mx-4" />
                     <button
                       onClick={handleLogout}
-                      className="block w-full text-left px-4 py-2 hover:bg-green-50/60"
+                      style={{ paddingLeft: "32px", display: "block", width: "100%", textAlign: "left" }}
+                      className="py-2 hover:bg-green-50/60"
                     >
                       Logout
                     </button>
