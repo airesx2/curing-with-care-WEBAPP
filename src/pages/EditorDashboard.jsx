@@ -18,6 +18,7 @@ import { Input } from "../components/ui/input"
 import { Label } from "../components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card"
 import { Textarea } from "../components/ui/textarea"
+import { ToastDemo} from "../components/toast"
 
 export default function EditorDashboard() {
   const [user, setUser] = useState(null)
@@ -32,6 +33,7 @@ export default function EditorDashboard() {
     read_time: "",
   })
   const [wordCount, setWordCount] = useState(0)
+  const [showToast, setShowToast] = useState(false)
 
   // Only these emails can access editor
   const allowedEditors = ["quark1594@gmail.com", "creepyspamk@gmail.com", "esmoon23@gmail.com", "priyaprabhudgp@gmail.com"]
@@ -93,6 +95,7 @@ export default function EditorDashboard() {
           read_time: form.read_time,
           created_at: serverTimestamp(), // automatic timestamp
           publish_date: new Date().toISOString(), // optional: store ISO date string
+        
         })
       }
       setForm({
@@ -105,6 +108,9 @@ export default function EditorDashboard() {
       })
       setWordCount(0)
       fetchArticles()
+      setShowToast(true)
+      setTimeout(() => setShowToast(false), 3000)
+
     } catch (err) {
       console.error("Error saving article:", err)
       alert("Something went wrong saving the article.")
@@ -152,6 +158,8 @@ export default function EditorDashboard() {
           <h1 className="text-3xl font-serif font-semibold tracking-wide">Editor Dashboard</h1>
           <Button variant="outline" onClick={handleLogout}>Logout</Button>
         </div>
+
+        <ToastDemo trigger={showToast}></ToastDemo> 
 
         {/* Article Form */}
         <Card className="mb-12">
