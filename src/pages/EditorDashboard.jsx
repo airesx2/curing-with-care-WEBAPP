@@ -157,7 +157,7 @@ export default function EditorDashboard() {
       <div className="max-w-5xl mx-auto">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-serif font-semibold tracking-wide">Editor Dashboard</h1>
-          <Button variant="outline" onClick={handleLogout}>Logout</Button>
+
         </div>
 
         <ToastDemo trigger={showToast} />
@@ -225,7 +225,7 @@ export default function EditorDashboard() {
                 />
               </div>
 
-              <Button type="submit">{form.id ? "Update Article" : "Publish Article"}</Button>
+              <Button className= "!bg-green-50 !text-green-700 hover:!bg-green-100 !rounded-md !px-2 !py-2 !cursor-pointer !shadow-sm" type="submit">{form.id ? "Update Article" : "Publish Article"}</Button>
             </form>
           </CardContent>
         </Card>
@@ -263,8 +263,7 @@ export default function EditorDashboard() {
                     {/* Delete button color */}
                     <Button 
                       size="sm"
-                      variant="destructive" 
-                      className="bg-red-50 text-red-900 hover:bg-red-100"
+                      className="!bg-green-50 !text-green-700 hover:!bg-green-100 !rounded-md !px-2 !cursor-pointer !shadow-sm"
                       onClick={() => handleDelete(a.id)}
                     >
                       Delete
