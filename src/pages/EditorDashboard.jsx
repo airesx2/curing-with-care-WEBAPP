@@ -156,7 +156,7 @@ export default function EditorDashboard() {
       <div className="max-w-5xl mx-auto">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-serif font-semibold tracking-wide">Editor Dashboard</h1>
-          <Button variant="outline" onClick={handleLogout}>Logout</Button>
+          {/*<Button variant="outline" onClick={handleLogout}>Logout</Button>*/}
         </div>
 
         <ToastDemo trigger={showToast}></ToastDemo> 
@@ -230,7 +230,7 @@ export default function EditorDashboard() {
                 />
               </div>
 
-              <Button type="submit">{form.id ? "Update Article" : "Publish Article"}</Button>
+              <Button className = " !bg-green-50  !px-2 !py-2  !text-green-700 hover:!bg-green-100 !rounded-md !px-2 !cursor-pointer" type="submit">{form.id ? "Update Article" : "Publish Article"}</Button>
             </form>
           </CardContent>
         </Card>
@@ -259,16 +259,16 @@ export default function EditorDashboard() {
                     {/* Edit button color */}
                     <Button 
                       size="sm"
-                      className="bg-green-50 text-green-900 hover:bg-green-100"
+                      className="!bg-green-50 !text-green-700 hover:!bg-green-100 !rounded-md !px-2 !cursor-pointer"
                       onClick={() => handleEdit(a)}
                     >
                       Edit
                     </Button>
                     {/* Delete button color */}
                     <Button 
-                      size="sm"
+                      size="sm" 
                       variant="destructive" 
-                      className="bg-red-50 text-red-900 hover:bg-red-100"
+                      className=" !bg-green-50 !text-green-700 hover:!bg-green-100 !rounded-md !px-2 !cursor-pointer"
                       onClick={() => handleDelete(a.id)}
                     >
                       Delete
