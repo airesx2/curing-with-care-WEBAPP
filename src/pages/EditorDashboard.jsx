@@ -18,7 +18,7 @@ import { Input } from "../components/ui/input"
 import { Label } from "../components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card"
 import { Textarea } from "../components/ui/textarea"
-import { ToastDemo} from "../components/toast"
+import { ToastDemo } from "../components/toast"
 
 export default function EditorDashboard() {
   const [user, setUser] = useState(null)
@@ -35,8 +35,12 @@ export default function EditorDashboard() {
   const [wordCount, setWordCount] = useState(0)
   const [showToast, setShowToast] = useState(false)
 
-  // Only these emails can access editor
-  const allowedEditors = ["quark1594@gmail.com", "creepyspamk@gmail.com", "esmoon23@gmail.com", "priyaprabhudgp@gmail.com"]
+  const allowedEditors = [
+    "quark1594@gmail.com",
+    "creepyspamk@gmail.com",
+    "esmoon23@gmail.com",
+    "priyaprabhudgp@gmail.com",
+  ]
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (u) => {
@@ -66,7 +70,7 @@ export default function EditorDashboard() {
     if (name === "content") {
       const words = value.trim().split(/\s+/).filter(Boolean).length
       setWordCount(words)
-      const estTime = Math.max(1, Math.ceil(words / 200)) // ~200 wpm
+      const estTime = Math.max(1, Math.ceil(words / 200))
       setForm((prev) => ({ ...prev, read_time: `${estTime} min read` }))
     }
   }
@@ -75,7 +79,6 @@ export default function EditorDashboard() {
     e.preventDefault()
     try {
       if (form.id) {
-        // Update
         const docRef = doc(db, "articles", form.id)
         await updateDoc(docRef, {
           title: form.title,
@@ -86,18 +89,17 @@ export default function EditorDashboard() {
           updated_at: serverTimestamp(),
         })
       } else {
-        // Create with automatic publish date
         await addDoc(collection(db, "articles"), {
           title: form.title,
           author_name: form.author_name,
           section: form.section,
           content: form.content,
           read_time: form.read_time,
-          created_at: serverTimestamp(), // automatic timestamp
-          publish_date: new Date().toISOString(), // optional: store ISO date string
-        
+          created_at: serverTimestamp(),
+          publish_date: new Date().toISOString(),
         })
       }
+
       setForm({
         id: null,
         title: "",
@@ -110,7 +112,6 @@ export default function EditorDashboard() {
       fetchArticles()
       setShowToast(true)
       setTimeout(() => setShowToast(false), 3000)
-
     } catch (err) {
       console.error("Error saving article:", err)
       alert("Something went wrong saving the article.")
@@ -156,19 +157,17 @@ export default function EditorDashboard() {
       <div className="max-w-5xl mx-auto">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-serif font-semibold tracking-wide">Editor Dashboard</h1>
-          {/*<Button variant="outline" onClick={handleLogout}>Logout</Button>*/}
+          <Button variant="outline" onClick={handleLogout}>Logout</Button>
         </div>
 
-        <ToastDemo trigger={showToast}></ToastDemo> 
+        <ToastDemo trigger={showToast} />
 
-        {/* Article Form */}
         <Card className="mb-12">
           <CardHeader>
             <CardTitle>{form.id ? "Edit Article" : "New Article"}</CardTitle>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
-              {/* TITLE */}
               <div className="grid gap-2">
                 <Label htmlFor="title">Title</Label>
                 <Input
@@ -181,7 +180,6 @@ export default function EditorDashboard() {
                 />
               </div>
 
-              {/* WRITER NAME */}
               <div className="grid gap-2">
                 <Label htmlFor="author_name">Writer Name</Label>
                 <Input
@@ -194,7 +192,6 @@ export default function EditorDashboard() {
                 />
               </div>
 
-              {/* SECTION */}
               <div className="grid gap-2">
                 <Label htmlFor="section">Section</Label>
                 <select
@@ -212,12 +209,10 @@ export default function EditorDashboard() {
                 </select>
               </div>
 
-              {/* WORD COUNT & READ TIME */}
               <p className="text-sm text-muted-foreground font-serif">
                 Word count: {wordCount} · Estimated read time: {form.read_time || "0 min read"}
               </p>
 
-              {/* CONTENT */}
               <div className="grid gap-2">
                 <Label htmlFor="content">Content</Label>
                 <Textarea
@@ -230,12 +225,11 @@ export default function EditorDashboard() {
                 />
               </div>
 
-              <Button className = " !bg-green-50  !px-2 !py-2  !text-green-700 hover:!bg-green-100 !rounded-md !px-2 !cursor-pointer !shadow-sm" type="submit">{form.id ? "Update Article" : "Publish Article"}</Button>
+              <Button type="submit">{form.id ? "Update Article" : "Publish Article"}</Button>
             </form>
           </CardContent>
         </Card>
 
-        {/* Article List */}
         <div className="space-y-6">
           {loading ? (
             <p>Loading articles...</p>
@@ -243,21 +237,23 @@ export default function EditorDashboard() {
             <p>No articles yet.</p>
           ) : (
             articles.map((a) => (
-              <Card
-                key={a.id}
-                className="bg-white border border-black/10" // ✅ Card background
-              >
+              <Card key={a.id} className="bg-white border border-black/10">
                 <CardContent className="flex justify-between items-center min-h-[100px]">
                   <div className="flex-1 flex flex-col justify-center">
-                    {/* Centered text vertically */}
                     <h2 className="text-xl font-serif font-semibold">{a.title}</h2>
                     <p className="text-sm text-muted-foreground font-serif mt-1">
-                      {a.author_name} · {a.section} · {a.read_time} · {a.publish_date}
+                      {a.author_name} · {a.section} · {a.read_time} ·{" "}
+                      {a.created_at?.toDate
+                        ? a.created_at.toDate().toLocaleDateString("en-US", {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                          })
+                        : ""}
                     </p>
                   </div>
                   <div className="flex gap-2">
-                    {/* Edit button color */}
-                    <Button 
+                    <Button
                       size="sm"
                       className="!bg-green-50 !text-green-700 hover:!bg-green-100 !rounded-md !px-2 !cursor-pointer !shadow-sm"
                       onClick={() => handleEdit(a)}
@@ -266,14 +262,13 @@ export default function EditorDashboard() {
                     </Button>
                     {/* Delete button color */}
                     <Button 
-                      size="sm" 
+                      size="sm"
                       variant="destructive" 
-                      className=" !bg-green-50 !text-green-700 hover:!bg-green-100 !rounded-md !px-2 !cursor-pointer !shadow-sm"
+                      className="bg-red-50 text-red-900 hover:bg-red-100"
                       onClick={() => handleDelete(a.id)}
                     >
                       Delete
                     </Button>
-                    {/* Change colors here if you want different shades */}
                   </div>
                 </CardContent>
               </Card>

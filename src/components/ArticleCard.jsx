@@ -21,7 +21,14 @@ export default function ArticleCard({ article }) {
               {article.author_name}
             </Link>
             <span className="mx-2">·</span>
-            <span>{article.publish_date}</span>
+            <span>
+              {article.created_at?.toDate
+                ? article.created_at.toDate().toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                })
+              : ""}
+            </span>
           </div>
         </CardHeader>
 
