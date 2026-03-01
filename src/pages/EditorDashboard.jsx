@@ -205,11 +205,11 @@ export default function EditorDashboard() {
                   onChange={handleChange}
                   className="rounded-md border border-input px-3 py-2 text-sm"
                 >
-                  <option value="Spotlight">Spotlight Stories</option>
-                  <option value="Understanding">Understanding Cancer</option>
-                  <option value="Prevention">Prevention & Wellness</option>
-                  <option value="News">In the News</option>
-                  <option value="Creative">Creative Corner</option>
+                  <option value="spotlight">Spotlight Stories</option>
+                  <option value="understanding">Understanding Cancer</option>
+                  <option value="prevention">Prevention & Wellness</option>
+                  <option value="news">In the News</option>
+                  <option value="creative">Creative Corner</option>
                 </select>
               </div>
 
