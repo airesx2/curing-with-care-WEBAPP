@@ -19,7 +19,6 @@ export default function ArticlePage() {
           const data = snapshot.data();
           setArticle({ id: snapshot.id, ...data });
 
-          // 🔥 increment views
           await updateDoc(docRef, {
             views: increment(1),
           });
@@ -41,6 +40,15 @@ export default function ArticlePage() {
   if (!article) {
     return <div className="p-10">Article not found</div>;
   }
+
+  // 🔥 ADDED: Proper full date formatting
+  const formattedDate = article.created_at?.toDate
+    ? article.created_at.toDate().toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })
+    : "";
 
   return (
     <div className="min-h-screen bg-green-50/50 px-6 py-16">
@@ -70,7 +78,10 @@ export default function ArticlePage() {
             {article.author_name}
           </Link>
           <span className="mx-2">·</span>
-          <span>{article.publish_date}</span>
+
+          {/* 🔥 CHANGED: now formatted properly */}
+          <span>{formattedDate}</span>
+
           <span className="mx-2">·</span>
           <span>{article.read_time}</span>
         </div>
