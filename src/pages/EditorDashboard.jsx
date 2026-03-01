@@ -230,7 +230,7 @@ export default function EditorDashboard() {
                 />
               </div>
 
-              <Button className = " !bg-green-50  !px-2 !py-2  !text-green-700 hover:!bg-green-100 !rounded-md !px-2 !cursor-pointer" type="submit">{form.id ? "Update Article" : "Publish Article"}</Button>
+              <Button className = " !bg-green-50  !px-2 !py-2  !text-green-700 hover:!bg-green-100 !rounded-md !px-2 !cursor-pointer !shadow-sm" type="submit">{form.id ? "Update Article" : "Publish Article"}</Button>
             </form>
           </CardContent>
         </Card>
@@ -259,7 +259,7 @@ export default function EditorDashboard() {
                     {/* Edit button color */}
                     <Button 
                       size="sm"
-                      className="!bg-green-50 !text-green-700 hover:!bg-green-100 !rounded-md !px-2 !cursor-pointer"
+                      className="!bg-green-50 !text-green-700 hover:!bg-green-100 !rounded-md !px-2 !cursor-pointer !shadow-sm"
                       onClick={() => handleEdit(a)}
                     >
                       Edit
@@ -268,7 +268,7 @@ export default function EditorDashboard() {
                     <Button 
                       size="sm" 
                       variant="destructive" 
-                      className=" !bg-green-50 !text-green-700 hover:!bg-green-100 !rounded-md !px-2 !cursor-pointer"
+                      className=" !bg-green-50 !text-green-700 hover:!bg-green-100 !rounded-md !px-2 !cursor-pointer !shadow-sm"
                       onClick={() => handleDelete(a.id)}
                     >
                       Delete
