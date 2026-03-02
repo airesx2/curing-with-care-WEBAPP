@@ -72,7 +72,7 @@ export default function SectionPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#F4FFE1] flex items-center justify-center font-serif">
+      <div className="min-h-screen !bg-[#F4FFE1] flex items-center justify-center font-serif">
         Loading...
       </div>
     );
