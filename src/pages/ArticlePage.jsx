@@ -53,8 +53,8 @@ export default function ArticlePage() {
   return (
     <div className="min-h-screen bg-green-50/50 px-6 py-16">
       <div className="max-w-4xl mx-auto">
-        {/* Hero Image */}
-        <div className="w-full h-72 bg-green-200 rounded-xl mb-10">
+        {/* Image */}
+        <div className="w-full h-72 bg-[#D2ECA0] rounded-xl mb-10">
           {article.image_url && (
             <img
               src={article.image_url}
@@ -65,7 +65,7 @@ export default function ArticlePage() {
         </div>
 
         {/* Title */}
-        <h1 className="text-4xl font-serif tracking-wide mb-4 leading-tight font-semibold">
+        <h1 className="text-4xl text-[#32567F] font-serif tracking-wide mb-4 leading-tight font-semibold">
           {article.title}
         </h1>
 
@@ -97,7 +97,7 @@ export default function ArticlePage() {
         <div className="mt-12 pt-6 border-t border-black/10 flex items-center justify-between text-sm text-muted-foreground font-serif">
           <span>{article.views || 0} views</span>
 
-          <button className="flex items-center gap-2 hover:text-red-500 transition">
+          <button className="flex items-center !cursor-pointer gap-2 hover:text-red-500 transition">
             <Heart size={18} />
             <span>Like</span>
           </button>

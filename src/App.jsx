@@ -15,7 +15,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="App bg-green-50/50 min-h-screen">
+        <div className="App bg-[#F6FFD5] min-h-screen">
           <Navbar />
 
           <Routes>

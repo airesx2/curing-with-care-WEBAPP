@@ -145,7 +145,7 @@ export default function EditorDashboard() {
   if (!user) {
     return (
       <div className="min-h-screen flex items-center justify-center text-center">
-        <p className="text-lg">
+        <p className="text-lg font-serif">
           You do not have access to this page. Please log in with an authorized editor account.
         </p>
       </div>
@@ -156,13 +156,13 @@ export default function EditorDashboard() {
     <div className="min-h-screen bg-green-50/50 px-6 py-16">
       <div className="max-w-5xl mx-auto">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-serif font-semibold tracking-wide">Editor Dashboard</h1>
+          <h1 className="text-3xl font-serif font-semibold tracking-wide text-[#32567F]">Editor Dashboard</h1>
 
         </div>
 
         <ToastDemo trigger={showToast} />
 
-        <Card className="mb-12">
+        <Card className="mb-12 font-serif">
           <CardHeader>
             <CardTitle>{form.id ? "Edit Article" : "New Article"}</CardTitle>
           </CardHeader>
@@ -225,7 +225,7 @@ export default function EditorDashboard() {
                 />
               </div>
 
-              <Button className= "!bg-green-50 !text-green-700 hover:!bg-green-100 !rounded-md !px-2 !py-2 !cursor-pointer !shadow-sm" type="submit">{form.id ? "Update Article" : "Publish Article"}</Button>
+              <Button className= "!bg-[#C8ED90] !text-[#6BA579] hover:!bg-[#E7FFC4] !rounded-md !px-2 !py-2 !cursor-pointer !font-serif !shadow-sm" type="submit">{form.id ? "Update Article" : "Publish Article"}</Button>
             </form>
           </CardContent>
         </Card>
@@ -240,7 +240,7 @@ export default function EditorDashboard() {
               <Card key={a.id} className="bg-white border border-black/10">
                 <CardContent className="flex justify-between items-center min-h-[100px]">
                   <div className="flex-1 flex flex-col justify-center">
-                    <h2 className="text-xl font-serif font-semibold">{a.title}</h2>
+                    <h2 className="text-xl font-serif font-semibold text-[#6EA56C]">{a.title}</h2>
                     <p className="text-sm text-muted-foreground font-serif mt-1">
                       {a.author_name} · {a.section} · {a.read_time} ·{" "}
                       {a.created_at?.toDate
@@ -255,7 +255,7 @@ export default function EditorDashboard() {
                   <div className="flex gap-2">
                     <Button
                       size="sm"
-                      className="!bg-green-50 !text-green-700 hover:!bg-green-100 !rounded-md !px-2 !cursor-pointer !shadow-sm"
+                      className="!bg-[#C8ED90] !font-serif !text-[#6BA579] hover:!bg-[#E7FFC4] !rounded-md !px-2 !cursor-pointer !shadow-sm"
                       onClick={() => handleEdit(a)}
                     >
                       Edit
@@ -263,7 +263,7 @@ export default function EditorDashboard() {
                     {/* Delete button color */}
                     <Button 
                       size="sm"
-                      className="!bg-green-50 !text-green-700 hover:!bg-green-100 !rounded-md !px-2 !cursor-pointer !shadow-sm"
+                      className="!bg-[#C8ED90] !font-serif !text-[#6BA579] hover:!bg-[#E7FFC4] !rounded-md !px-2 !cursor-pointer !shadow-sm"
                       onClick={() => handleDelete(a.id)}
                     >
                       Delete

@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 export default function ArticleCard({ article }) {
   return (
     <Link to={`/article/${article.id}`} className="block">
-      <Card className="overflow-hidden transition duration-300 hover:shadow-md cursor-pointer">
+      <Card className="overflow-hidden transition duration-300 hover:shadow-md cursor-pointer ">
         {/* Fake Image */}
-        <div className="w-full h-48 bg-green-200"></div>
+        <div className="w-full h-48 bg-[#D2ECA0]"></div>
 
         <CardHeader>
-          <CardTitle className="text-xl font-serif tracking-wide mb-2">
+          <CardTitle className="text-xl font-serif tracking-wide mb-2 text-[#6EA56C]">
             {article.title}
           </CardTitle>
 

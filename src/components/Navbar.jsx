@@ -27,7 +27,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-green-50/50 px-6 py-4">
+    <nav className="bg-[#CBEC93] px-6 py-4">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
 
         {/* Logo */}

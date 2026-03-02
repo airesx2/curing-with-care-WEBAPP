@@ -97,7 +97,7 @@ export function LoginCard() {
       </CardContent>
 
       <CardFooter className="flex flex-col gap-2">
-        <Button onClick={handleLogin} className="!bg-[#d4e9dc] !text-[#2d5a3d] !hover:bg-[#b8d9c4] !hover:text-[#1e3d2a] !rounded-md !px-4 !py-2 !transition-colors !cursor-pointer !shadow-sm">
+        <Button onClick={handleLogin} className="!bg-[#C8ED90] !text-[#6BA579] !rounded-md !px-4 !py-2 !transition-colors !cursor-pointer !shadow-sm">
           Login
         </Button>
 

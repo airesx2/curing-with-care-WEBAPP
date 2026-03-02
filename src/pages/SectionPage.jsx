@@ -72,7 +72,7 @@ export default function SectionPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen bg-[#F4FFE1] flex items-center justify-center font-serif">
         Loading...
       </div>
     );
@@ -83,17 +83,17 @@ export default function SectionPage() {
       <div className="max-w-6xl mx-auto">
 
         <div className="mb-14">
-          <h1 className="text-4xl font-bold mb-4">
+          <h1 className="text-4xl text-[#32567F] font-serif  font-bold mb-4">
             {current.title}
           </h1>
-          <p className="text-muted-foreground max-w-2xl">
+          <p className="text-muted-foreground font-serif max-w-2xl">
             {current.description}
           </p>
           <div className="mt-8 h-px bg-black/10 w-full"></div>
         </div>
 
         {articles.length === 0 ? (
-          <p>No articles yet.</p>
+          <p className="font-serif">No articles yet.</p>
         ) : (
           <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
             {articles.map(article => (

@@ -12,12 +12,12 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-green-50 px-6 py-16">
+    <div className="min-h-screen bg-[#F4FFE1] px-6 py-16">
       <div className="max-w-6xl mx-auto">
 
         {/* Mission Section */}
         <div className="mb-16 text-center">
-          <h1 className="text-4xl font-serif tracking-wide font-bold mb-4 leading-tight text-primary">
+          <h1 className="!text-[#32567F] text-4xl font-serif tracking-wide font-bold mb-4 leading-tight text-primary">
             curingwithCARE
           </h1>
           <p className="text-muted-foreground max-w-2xl mx-auto font-serif">
@@ -28,7 +28,7 @@ export default function Home() {
 
         {/* Featured Section */}
         <div>
-          <h2 className="text-2xl font-semibold mb-8 text-primary font-serif">
+          <h2 className="text-2xl !text-[#32567F] font-semibold mb-8 text-primary font-serif">
             Featured Stories
           </h2>
 
