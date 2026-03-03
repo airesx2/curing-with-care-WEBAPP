@@ -24,13 +24,12 @@ export function AuthProvider({ children }) {
 
   if(loading){
   return (
-    <div className="auth-loading-screen">
+    <div className="auth-loading-screen !bg-[#CBEC93]">
       <div className="hopping-loader">
       <img src={bunnyImg} className="bunny" alt="bunny" />
       <span style={{ 
-        fontFamily: 'Courier New, monospace', 
         fontSize: '1.5rem', 
-        fontWeight: 'bold', 
+        fontWeight: 'light', 
         marginTop: "40px" }}>
           
           Loading your account…</span>
