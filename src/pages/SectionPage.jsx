@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../lib/firebase";
 import ArticleCard from "../components/ArticleCard";
+import bunnyImg from '../context/animal-bunny-domestic-svgrepo-com.svg';
 
 export default function SectionPage() {
   const { section } = useParams();
@@ -72,9 +73,18 @@ export default function SectionPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen !bg-[#F4FFE1] flex items-center justify-center font-serif">
-        Loading...
-      </div>
+       <div className="auth-loading-screen">
+            <div className="hopping-loader">
+            <img src={bunnyImg} className="bunny" alt="bunny" />
+            <span style={{ 
+              fontFamily: 'Courier New, monospace', 
+              fontSize: '1.5rem', 
+              fontWeight: 'bold', 
+              marginTop: "40px" }}>
+                
+                Loading your account…</span>
+            </div>
+          </div>
     );
   }
 
