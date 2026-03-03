@@ -24,7 +24,7 @@ export function AuthProvider({ children }) {
 
   if(loading){
   return (
-    <div className="auth-loading-screen !bg-[#CBEC93]">
+    <div className="auth-loading-screen !bg-[#F4FFE1]">
       <div className="hopping-loader">
       <img src={bunnyImg} className="bunny" alt="bunny" />
       <span style={{ 
