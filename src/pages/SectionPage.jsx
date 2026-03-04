@@ -30,11 +30,6 @@ export default function SectionPage() {
       title: "In the News",
       description:
         "Recent breakthroughs and research highlights."
-    },
-    creative: {
-      title: "Creative Corner",
-      description:
-        "Student art, photography, and creative reflections."
     }
   };
 
@@ -65,7 +60,7 @@ export default function SectionPage() {
 
   if (!current) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center !bg-[#F4FFE1]">
         <h1>Section not found</h1>
       </div>
     );
@@ -73,13 +68,11 @@ export default function SectionPage() {
 
   if (loading) {
     return (
-       <div className="auth-loading-screen">
+       <div className="auth-loading-screen !bg-[#F4FFE1]">
             <div className="hopping-loader">
             <img src={bunnyImg} className="bunny" alt="bunny" />
-            <span style={{ 
-              fontFamily: 'Courier New, monospace', 
+            <span style={{  
               fontSize: '1.5rem', 
-              fontWeight: 'bold', 
               marginTop: "40px" }}>
                 
                 Loading your account…</span>
