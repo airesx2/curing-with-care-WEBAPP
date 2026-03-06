@@ -15,8 +15,8 @@ A React-based digital publication platform for a student-run online magazine ena
 * **Content organization**: Organize articles into easily-navigable categories and improve user experience with advanced sorting and browsing capabilities
 * **Homepage and discovery**: Automatically highlight featured articles and latest publications on the homepage
 * **Search and navigation**: Search articles by title and content, easily navigate between categories and articles
-* **Moderated community engagement**: Comment on articles and foster a safe, respectful environment with moderated messages
-* **Editor/admin interface**: Utilize a secure dashboard to create/edit/publish articles, manage categories/articles, and moderate comments
+* **Community engagement**: Like/view articles
+* **Editor/admin interface**: Utilize a secure dashboard to create/edit/publish articles, manage categories/articles
 * **Customizable user experience**: dark and light mode toggle, responsive design for desktop and mobile, and accessible UI focused on readability
 
 ---
