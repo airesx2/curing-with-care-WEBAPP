@@ -1,6 +1,7 @@
 import * as React from "react";
 import { HoverCard } from "radix-ui";
 import "./HoverCard.css";
+import sampleImg from "../images/sample.jpg";
 
 const HoverCardDemo = () => (
 	<HoverCard.Root>
@@ -12,7 +13,7 @@ const HoverCardDemo = () => (
 			>
 				<img
 					className="Image normal"
-					src="../images/sample.jpg"
+					src={sampleImg}
 					alt="Sample"
 				/>
 			</a>

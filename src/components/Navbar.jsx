@@ -12,7 +12,7 @@ const sections = [
   { name: "Understanding Cancer", path: "/section/understanding" },
   { name: "Prevention & Wellness", path: "/section/prevention" },
   { name: "In the News", path: "/section/news" },
-  { name: "Creative Corner", path: "/section/creative" },
+  { name: "Creative Corner", path: "/creative" },
 ];
 
 export default function Navbar() {

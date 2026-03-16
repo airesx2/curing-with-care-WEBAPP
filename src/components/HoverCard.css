@@ -45,15 +45,16 @@ a {
 
 .Image {
 	display: block;
-	border-radius: 100%;
+	border-radius: 5%;
+	margin-top: 20px;
 }
 .Image.normal {
-	width: 45px;
-	height: 45px;
+	width: 50%;
+	height: 50%;
 }
 .Image.large {
-	width: 60px;
-	height: 60px;
+	width: 50%;
+	height: 50%;
 }
 
 .Text {

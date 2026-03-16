@@ -10,12 +10,13 @@ import ArticlePage from "./pages/ArticlePage";
 import SectionPage from "./pages/SectionPage";
 import EditorDashboard from "./pages/EditorDashboard";
 import LoginPage from "./pages/LoginPage";
+import CreativeCorner from "./pages/CreativeCorner";
 
 class App extends Component {
   render() {
     return (
       <Router>
-        <div className="App bg-[#F6FFD5] min-h-screen">
+        <div className="App bg-[#F4FFE1] min-h-screen">
           <Navbar />
 
           <Routes>
@@ -23,6 +24,7 @@ class App extends Component {
             <Route path="/article/:id" element={<ArticlePage />} />
             <Route path="/section/:section" element={<SectionPage />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/creative" element={<CreativeCorner/>} />
 
             {/* Protected Editor Route */}
             <Route
