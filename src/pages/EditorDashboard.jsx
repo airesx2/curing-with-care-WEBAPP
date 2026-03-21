@@ -164,6 +164,7 @@ export default function EditorDashboard() {
 
         <Card className="mb-12 font-serif">
           <CardHeader>
+            
             <CardTitle>{form.id ? "Edit Article" : "New Article"}</CardTitle>
           </CardHeader>
           <CardContent>

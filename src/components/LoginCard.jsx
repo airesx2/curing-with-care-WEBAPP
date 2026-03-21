@@ -2,6 +2,8 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
 import { auth } from "../lib/firebase"
+import { ToastDemo } from "../components/toastLogin"
+
 
 import { Button } from "./ui/button"
 import {
@@ -19,12 +21,16 @@ export function LoginCard() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const navigate = useNavigate()
+  const [showToast, setShowToast] = useState(false)
 
   const handleLogin = async (e) => {
     e.preventDefault()
     try {
       await signInWithEmailAndPassword(auth, email, password)
+      setShowToast(true)
+      setTimeout(() => {
       navigate("/editor")
+    }, 3000)
     } catch (error) {
       alert(error.message)
     }
@@ -41,7 +47,9 @@ export function LoginCard() {
   }
 
   return (
+    
     <Card className="w-full max-w-sm">
+      <ToastDemo trigger={showToast} />
       <CardHeader>
         <div className="flex items-start justify-between">
           <div>
@@ -70,7 +78,7 @@ export function LoginCard() {
             </div>
 
             <div className="grid gap-2">
-              <div className="flex items-center">
+              <div className="flex items-center justify-between">
                 <Label htmlFor="password">Password</Label>
 
                 <a
