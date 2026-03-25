@@ -69,7 +69,7 @@ export default function ArticlePage() {
     return <div className="p-10">Article not found</div>;
   }
 
-  // 🔥 ADDED: Proper full date formatting
+  // Proper full date formatting
   const formattedDate = article.created_at?.toDate
     ? article.created_at.toDate().toLocaleDateString("en-US", {
         year: "numeric",
@@ -107,7 +107,7 @@ export default function ArticlePage() {
           </Link>
           <span className="mx-2">·</span>
 
-          {/* 🔥 CHANGED: now formatted properly */}
+  
           <span>{formattedDate}</span>
 
           <span className="mx-2">·</span>
@@ -132,7 +132,7 @@ export default function ArticlePage() {
             }`}
           >
             <Heart size={18} fill={liked ? "currentColor" : "none"} />
-            <span>{likeCount}</span>
+            <span className="ml-1">{likeCount}</span>
           </button>
         </div>
       </div>
