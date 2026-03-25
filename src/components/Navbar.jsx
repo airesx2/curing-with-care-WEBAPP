@@ -47,7 +47,7 @@ export default function Navbar() {
                 `text-green-900 font-light tracking-wide uppercase text-sm transition-colors whitespace-nowrap ${
                   isActive
                     ? "border-b border-green-800 pb-0.5"
-                    : "hover:text-green-700"
+                    : "hover:text-green-700 !cursor-pointer"
                 }`
               }
             >
@@ -59,7 +59,7 @@ export default function Navbar() {
           <div className="relative flex items-center">
             <button
               onClick={() => setOpen(!open)}
-              className="text-green-900 hover:text-green-700 transition"
+              className="text-green-900 hover:text-green-700 transition !cursor-pointer"
             >
               <User size={20} />
             </button>
