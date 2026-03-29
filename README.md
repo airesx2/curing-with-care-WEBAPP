@@ -3,7 +3,7 @@ A React-based digital publication platform for a student-run online magazine ena
 
 **notes:
 - front article card is only a placeholder, please navigate to other tabs to find published cards
-- login/sign up is limited to registered admin
+- login/sign up is limited to registered admin (you can use user creepyspamk@gmail.com/hello!) for testing
 
 ---
 
