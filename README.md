@@ -1,6 +1,9 @@
 # Branham High School curingwithCARE Online Magazine
 A React-based digital publication platform for a student-run online magazine enabling curated articles, featured content, search, and editor moderation in a modern, responsive interface.
-**note: front article card is only a placeholder, please navigate to other tabs to find published cards.
+
+**notes:
+- front article card is only a placeholder, please navigate to other tabs to find published cards
+- login/sign up is limited to registered admin
 
 ---
 
