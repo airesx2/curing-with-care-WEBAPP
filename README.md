@@ -25,4 +25,5 @@ A React-based digital publication platform for a student-run online magazine ena
 * **Frontend**: React, TypeScript/JavaScript, Tailwind CSS, Shadcn and Radix UI
 * **Backend**: Firebase
 * **Deployment**: Netlify
+  
 >>>>>>> 88d6bc5a44e6b287602ea7066d1cd78836ff8336
