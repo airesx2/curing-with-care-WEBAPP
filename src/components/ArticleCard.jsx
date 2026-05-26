@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 export default function ArticleCard({ article }) {
   return (
-    <Link to={`/article/${article.id}`} className="block">
-      <Card className="overflow-hidden transition duration-300 hover:shadow-md cursor-pointer ">
+    <Link to={`/article/${article.id}`} className="block h-full">
+      <Card className="overflow-hidden transition duration-300 hover:shadow-md cursor-pointer h-full">
         {/* Fake Image */}
         <div className="w-full h-48 bg-[#D2ECA0]"></div>
 

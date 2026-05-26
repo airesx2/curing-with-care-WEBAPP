@@ -46,7 +46,7 @@ export default function CreativeCorner() {
             Creative Corner
           </h1>
           <p className="text-muted-foreground font-serif max-w-2xl">
-            try hovering over the images :)
+            Try hovering over the images :)
           </p>
           <div className="mt-8 h-px bg-black/10 w-full"></div>
           <div style={{

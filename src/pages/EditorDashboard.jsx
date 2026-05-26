@@ -9,8 +9,6 @@ import {
   updateDoc,
   deleteDoc,
   serverTimestamp,
-  query,
-  orderBy,
 } from "firebase/firestore"
 import { onAuthStateChanged } from "firebase/auth"
 import { Button } from "../components/ui/button"
@@ -34,6 +32,7 @@ export default function EditorDashboard() {
   })
   const [wordCount, setWordCount] = useState(0)
   const [showToast, setShowToast] = useState(false)
+  const [confirmDelete, setConfirmDelete] = useState(null)
 
   const allowedEditors = [
     "quark1594@gmail.com",
@@ -56,9 +55,14 @@ export default function EditorDashboard() {
 
   const fetchArticles = async () => {
     setLoading(true)
-    const q = query(collection(db, "articles"), orderBy("created_at", "desc"))
-    const snapshot = await getDocs(q)
-    const docs = snapshot.docs.map((d) => ({ id: d.id, ...d.data() }))
+    const snapshot = await getDocs(collection(db, "articles"))
+    const docs = snapshot.docs
+      .map((d) => ({ id: d.id, ...d.data() }))
+      .sort((a, b) => {
+        const ta = a.created_at?.toDate?.() ?? new Date(0)
+        const tb = b.created_at?.toDate?.() ?? new Date(0)
+        return tb - ta
+      })
     setArticles(docs)
     setLoading(false)
   }
@@ -131,11 +135,14 @@ export default function EditorDashboard() {
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
-  const handleDelete = async (id) => {
-    if (confirm("Are you sure you want to delete this article?")) {
-      await deleteDoc(doc(db, "articles", id))
-      fetchArticles()
-    }
+  const handleDelete = (id) => {
+    setConfirmDelete(id)
+  }
+
+  const confirmDeleteArticle = async () => {
+    await deleteDoc(doc(db, "articles", confirmDelete))
+    setConfirmDelete(null)
+    fetchArticles()
   }
 
   const handleLogout = async () => {
@@ -239,9 +246,9 @@ export default function EditorDashboard() {
           ) : (
             articles.map((a) => (
               <Card key={a.id} className="bg-white border border-black/10">
-                <CardContent className="flex justify-between items-center min-h-[100px]">
-                  <div className="flex-1 flex flex-col justify-center">
-                    <h2 className="text-xl font-serif font-semibold text-[#6EA56C]">{a.title}</h2>
+                <CardContent className="flex justify-between items-start gap-4 !py-5 px-6">
+                  <div className="flex-1 flex flex-col">
+                    <h2 className="text-xl font-serif font-semibold text-[#6EA56C] leading-snug">{a.title}</h2>
                     <p className="text-sm text-muted-foreground font-serif mt-1">
                       {a.author_name} · {a.section} · {a.read_time} ·{" "}
                       {a.created_at?.toDate
@@ -253,7 +260,7 @@ export default function EditorDashboard() {
                         : ""}
                     </p>
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 shrink-0 pt-1">
                     <Button
                       size="sm"
                       className="!bg-[#C8ED90] !font-serif !text-[#6BA579] hover:!bg-[#E7FFC4] !rounded-md !px-2 !cursor-pointer !shadow-sm"
@@ -261,10 +268,9 @@ export default function EditorDashboard() {
                     >
                       Edit
                     </Button>
-                    {/* Delete button color */}
-                    <Button 
+                    <Button
                       size="sm"
-                      className="!bg-[#C8ED90] !font-serif !text-[#6BA579] hover:!bg-[#E7FFC4] !rounded-md !px-2 !cursor-pointer !shadow-sm"
+                      className="!bg-[#C8ED90] !font-serif !text-[#6BA579] hover:!bg-[#E7FFC4] !rounded-md !px-2 !cursor-pointer !shadow-sm "
                       onClick={() => handleDelete(a.id)}
                     >
                       Delete
@@ -276,6 +282,32 @@ export default function EditorDashboard() {
           )}
         </div>
       </div>
+
+      {/* Delete confirmation modal */}
+      {confirmDelete && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30">
+          <div className="bg-white rounded-2xl shadow-xl px-8 py-8 max-w-sm w-full mx-4 font-serif text-center">
+            <h3 className="text-xl font-semibold text-[#32567F] mb-3">Delete Article?</h3>
+            <p className="text-sm text-muted-foreground mb-7">
+              This action cannot be undone. The article will be permanently removed.
+            </p>
+            <div className="flex justify-center gap-3">
+              <button
+                onClick={() => setConfirmDelete(null)}
+                className="px-5 py-2 rounded-lg border border-black/10 text-sm text-muted-foreground hover:bg-gray-50 transition !cursor-pointer"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={confirmDeleteArticle}
+                className="px-5 py-2 rounded-lg bg-[#C8ED90] text-[#6BA579] text-sm font-medium hover:bg-[#E7FFC4] transition !cursor-pointer"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

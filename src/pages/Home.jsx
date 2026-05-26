@@ -29,7 +29,7 @@ export default function Home() {
             curingwithCARE
           </h1>
           <p className="text-muted-foreground max-w-2xl mx-auto font-serif">
-            *placeholder* Empowering students to explore cancer research, prevention,
+            Empowering students to explore cancer research, prevention,
             wellness, and creative expression through accessible, evidence-based writing.
           </p>
         </div>
