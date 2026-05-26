@@ -1,15 +1,23 @@
+import { useEffect, useState } from "react";
+import { collection, getDocs, orderBy, query, limit } from "firebase/firestore";
+import { db } from "../lib/firebase";
 import ArticleCard from "../components/ArticleCard"
 
 export default function Home() {
-  const mockArticle = {
-    id: "1",
-    title: "Understanding Immunotherapy",
-    excerpt:
-      "A deep dive into how the immune system can be trained to fight cancer cells and reshape modern oncology.",
-    author_id: "abc123",
-    author_name: "Jane Doe",
-    publish_date: "March 2026",
-  }
+  const [featured, setFeatured] = useState([]);
+
+  useEffect(() => {
+    async function fetchFeatured() {
+      try {
+        const q = query(collection(db, "articles"), orderBy("created_at", "desc"), limit(3));
+        const snapshot = await getDocs(q);
+        setFeatured(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    fetchFeatured();
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#F4FFE1] px-6 py-16">
@@ -32,8 +40,10 @@ export default function Home() {
             Featured Stories
           </h2>
 
-          <div className="max-w-md">
-            <ArticleCard article={mockArticle} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {featured.map(article => (
+              <ArticleCard key={article.id} article={article} />
+            ))}
           </div>
         </div>
 
