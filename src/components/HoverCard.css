@@ -57,6 +57,18 @@ a {
 	height: 50%;
 }
 
+.MosaicImage {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: 6px;
+	object-fit: cover;
+	transition: opacity 0.2s ease;
+}
+.MosaicImage:hover {
+	opacity: 0.85;
+}
+
 .Text {
 	margin: 0;
 	color: var(--mauve-12);
