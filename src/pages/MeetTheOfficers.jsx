@@ -1,12 +1,54 @@
 // src/pages/MeetTheOfficers.jsx
+import estherPhoto from "../officers/esther.jpg";
+import meghaPhoto from "../officers/officer.jpg";
+import sanvitiPhoto from "../officers/sanviti.jpg";
+import dhrithiPhoto from "../officers/dhrithi.jpg";
+import annaPhoto from "../officers/officer.jpg";
+import luciaPhoto from "../officers/lucia.png";
+
 const officers = [
-  // Add officers here. Example:
-  // {
-  //   name: "Jane Doe",
-  //   title: "President",
-  //   description: "Jane is a junior studying Biology...",
-  //   photo: "/officers/jane.jpg",
-  // },
+  {
+    name: "Esther Moon",
+    title: "President & Editor in Chief",
+    description:
+      "Hi everyone! My name is Esther Moon, and I'm a rising senior. I am planning to pursue a career in the medical field. I enjoy baking, crocheting, and playing the clarinet. I also love spending time with family and friends!",
+    photo: estherPhoto,
+  },
+  {
+    name: "Megha Somayaji",
+    title: "President",
+    description:
+      "Hello! My name is Megha Somayaji and I am a rising senior. I am interested in majoring in biology in college. Some of my hobbies are playing tennis with friends, reading, and spending time with family!",
+    photo: meghaPhoto,
+  },
+  {
+    name: "Sanviti Amarnath",
+    title: "President",
+    description:
+      "My name is Sanviti Amarnath and I’m a rising senior. I’m interested in majoring in biology or neuroscience along with a minor in business in college. My hobbies are singing, drawing, watching TV shows and movies, and hanging out with friends and my family!",
+    photo: sanvitiPhoto, 
+  },
+  {
+    name: "Dhrithi Ravilochan",
+    title: "Secretary",
+    description:
+      "Hi my name is Dhrithi Ravilochan and I'm a rising Junior. I'm interested in majoring in biological sciences in college. My hobbies are running, hiking, baking, reading, and spending time with friends and family!",
+    photo: dhrithiPhoto, 
+  },
+  {
+    name: "Anna Waller",
+    title: "Treasurer",
+    description:
+      "Hello! My name is Anna Waller and I am a rising senior! I’m interested in becoming a pediatric nurse and majoring in nursing in college. Some of my hobbies are gymnastics and reading.",
+    photo: annaPhoto, 
+  },
+  {
+    name: "Lucia Nguyen",
+    title: "Social Media Manager",
+    description:
+      "My name is Lucia Nguyen and I’m a rising senior. I’m interested in going down the pre-med path in college and I would like to pursue a minor in studio art or art history. I love drawing and playing my clarinet as well, and I enjoy writing, whether it be analyzation for English, or creative writing for fun.",
+    photo: luciaPhoto, 
+  }
 ];
 
 export default function MeetTheOfficers() {
