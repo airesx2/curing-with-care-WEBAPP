@@ -8,6 +8,7 @@ import { auth } from "../lib/firebase";
 
 const sections = [
   { name: "Home", path: "/" },
+  { name: "Meet the Officers", path: "/officers" },
   { name: "Spotlight Stories", path: "/section/spotlight" },
   { name: "Understanding Cancer", path: "/section/understanding" },
   { name: "Prevention & Wellness", path: "/section/prevention" },
@@ -36,7 +37,7 @@ export default function Navbar() {
         </div>
 
         {/* Links + Profile */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-4">
 
           {/* Section Links */}
           {sections.map((section) => (
@@ -44,7 +45,7 @@ export default function Navbar() {
               key={section.path}
               to={section.path}
               className={({ isActive }) =>
-                `text-green-900 font-light tracking-wide uppercase text-sm transition-colors whitespace-nowrap ${
+                `text-green-900 font-light tracking-wide uppercase text-xs transition-colors whitespace-nowrap ${
                   isActive
                     ? "border-b border-green-800 pb-0.5"
                     : "hover:text-green-700 !cursor-pointer"

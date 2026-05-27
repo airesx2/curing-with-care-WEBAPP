@@ -11,6 +11,7 @@ import SectionPage from "./pages/SectionPage";
 import EditorDashboard from "./pages/EditorDashboard";
 import LoginPage from "./pages/LoginPage";
 import CreativeCorner from "./pages/CreativeCorner";
+import MeetTheOfficers from "./pages/MeetTheOfficers";
 
 class App extends Component {
   render() {
@@ -25,6 +26,7 @@ class App extends Component {
             <Route path="/section/:section" element={<SectionPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/creative" element={<CreativeCorner/>} />
+            <Route path="/officers" element={<MeetTheOfficers />} />
 
             {/* Protected Editor Route */}
             <Route
