@@ -1,6 +1,6 @@
 // src/pages/MeetTheOfficers.jsx
 import estherPhoto from "../officers/esther.jpg";
-import meghaPhoto from "../officers/officer.jpg";
+import meghaPhoto from "../officers/megha.jpg";
 import sanvitiPhoto from "../officers/sanviti.jpg";
 import dhrithiPhoto from "../officers/dhrithi.jpg";
 import annaPhoto from "../officers/officer.jpg";
