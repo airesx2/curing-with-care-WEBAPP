@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 import Home from "./pages/Home";
@@ -20,6 +21,7 @@ class App extends Component {
         <div className="App bg-[#F4FFE1] min-h-screen">
           <Navbar />
 
+          <div className="flex flex-col min-h-screen">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/article/:id" element={<ArticlePage />} />
@@ -47,6 +49,8 @@ class App extends Component {
               }
             />
           </Routes>
+          <Footer />
+          </div>
         </div>
       </Router>
     );

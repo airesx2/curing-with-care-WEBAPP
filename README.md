@@ -35,6 +35,10 @@ npm run dev
 
 The `/editor` route is protected. Approved editors are managed via Firebase Auth and a hardcoded allowlist in `firestore.rules`.
 
+## Contributors
+
+Built by **Nithya K.**, **Arie L.**, and **Priya P.**
+
 ## Project Structure
 
 ```
