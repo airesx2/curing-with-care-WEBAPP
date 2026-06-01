@@ -1,5 +1,6 @@
 # curingwithCARE Online Magazine
 A React-based digital publication platform for a student-run online magazine enabling curated articles, featured content, search, and editor moderation in a modern, responsive interface.
+[DEMO link] https://curing-with-care.vercel.app/
 
 ---
 
