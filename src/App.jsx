@@ -11,6 +11,7 @@ import EditorDashboard from "./pages/EditorDashboard";
 import LoginPage from "./pages/LoginPage";
 import CreativeCorner from "./pages/CreativeCorner";
 import MeetTheOfficers from "./pages/MeetTheOfficers";
+import WriterPage from "./pages/WriterPage";
 
 function ConditionalFooter() {
   const location = useLocation();
@@ -31,6 +32,7 @@ class App extends Component {
               <Route path="/login" element={<LoginPage />} />
               <Route path="/creative" element={<CreativeCorner/>} />
               <Route path="/officers" element={<MeetTheOfficers />} />
+              <Route path="/writer/:writerSlug" element={<WriterPage />} />
               <Route
                 path="/editor"
                 element={

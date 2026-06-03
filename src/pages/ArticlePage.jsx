@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { doc, getDoc, updateDoc, increment } from "firebase/firestore";
 import { db } from "../lib/firebase";
 import { Heart } from "lucide-react";
+import WriterLink from "../components/WriterLink";
 
 export default function ArticlePage() {
   const { id } = useParams();
@@ -99,12 +100,7 @@ export default function ArticlePage() {
 
         {/* Metadata */}
         <div className="text-sm text-muted-foreground font-serif mb-8">
-          <Link
-            to={`/writer/${article.author_id}`}
-            className="hover:underline"
-          >
-            {article.author_name}
-          </Link>
+          <WriterLink name={article.author_name} className="font-serif text-sm" />
           <span className="mx-2">·</span>
 
   
