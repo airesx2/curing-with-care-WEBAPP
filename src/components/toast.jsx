@@ -22,7 +22,7 @@ export const ToastDemo = ({trigger}) => {
 			<Toast.Root className="ToastRoot" open={open} onOpenChange={setOpen}>
 				<Toast.Title className="ToastTitle">Publishment Successful!</Toast.Title>
 				<Toast.Description className="ToastDescription">
-					Your article is now live under 'Understanding Cancer'
+					Your article is now live
 				</Toast.Description>
 				<Toast.Action
 					className="ToastAction"
