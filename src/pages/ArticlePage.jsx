@@ -100,7 +100,7 @@ export default function ArticlePage() {
 
         {/* Metadata */}
         <div className="text-sm text-muted-foreground font-serif mb-8">
-          <WriterLink name={article.author_name} className="font-serif text-sm" />
+          <WriterLink name={article.author_name} className="font-serif text-sm !underline !cursor-pointer" />
           <span className="mx-2">·</span>
 
   

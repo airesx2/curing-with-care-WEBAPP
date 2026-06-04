@@ -5,6 +5,7 @@ import sanvitiPhoto from "../officers/sanviti.jpg";
 import dhrithiPhoto from "../officers/dhrithi.jpg";
 import annaPhoto from "../officers/anna.png";
 import luciaPhoto from "../officers/lucia.png";
+import WriterLink from "../components/WriterLink";
 
 const officers = [
   {
@@ -80,8 +81,8 @@ export default function MeetTheOfficers() {
                   className="w-52 h-52 object-cover rounded-sm flex-shrink-0"
                 />
                 <div className="flex flex-col gap-2">
-                  <h2 className="text-2xl font-serif font-semibold text-[#32567F]">
-                    {officer.name}
+                  <h2 className="text-2xl font-serif font-semibold">
+                    <WriterLink name={officer.name} className="!text-[#32567F] !no-underline !hover:underline !cursor-pointer" />
                   </h2>
                   <p className="text-sm font-serif tracking-widest uppercase text-muted-foreground">
                     {officer.title}
