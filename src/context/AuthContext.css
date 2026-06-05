@@ -1,39 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600;700&display=swap');
+
 .auth-loading-screen {
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  font-size: 1.5rem;
-  background-color: #b5da7a;
-  color: #333;
-}
-
-.hopping-loader {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.bunny {
-  width: 40px;   /* adjust as needed */
-  height: 40px;
-  position: relative;
-  animation: hop 1s ease-in-out infinite, moveRight 3s linear infinite;
-}
-
-
-
-
-/* Bunny hops up and down */
-@keyframes hop {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
-}
-
-/* Bunny moves horizontally across the text */
-@keyframes moveRight {
-  0% { left: -50px; }
-  100% { left: 250px; } /* adjust based on text width */
+  background-color: #F4FFE1;
 }

@@ -96,3 +96,126 @@
     @apply bg-background text-foreground;
   }
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600;700&display=swap');
+
+/* Loader Animations */
+@keyframes floatArm {
+  0%, 100% {
+    transform: translate(0px, 0px);
+  }
+  50% {
+    transform: translate(-2px, -4px);
+  }
+}
+
+@keyframes floatEyepiece {
+  0%, 100% {
+    transform: translate(0px, 0px);
+  }
+  50% {
+    transform: translate(2px, -3px);
+  }
+}
+
+@keyframes floatObjectives {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(3px);
+  }
+}
+
+@keyframes floatStage {
+  0%, 100% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(2px);
+  }
+}
+
+@keyframes pulseKnob {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes baseBounce {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(1px);
+  }
+}
+
+@keyframes loadingDots {
+  0%, 20% {
+    content: "";
+  }
+  40% {
+    content: ".";
+  }
+  60% {
+    content: "..";
+  }
+  80%, 100% {
+    content: "...";
+  }
+}
+
+.base {
+  animation: baseBounce 2.4s ease-in-out infinite;
+  transform-origin: center;
+  filter: drop-shadow(0 2px 8px rgba(110, 165, 108, 0.18));
+}
+
+.arm {
+  animation: floatArm 2.5s ease-in-out infinite;
+  transform-origin: center;
+  filter: drop-shadow(0 2px 8px rgba(110, 165, 108, 0.18));
+}
+
+.eyepiece {
+  animation: floatEyepiece 2.2s ease-in-out infinite;
+  transform-origin: center;
+  filter: drop-shadow(0 2px 8px rgba(110, 165, 108, 0.18));
+}
+
+.objectives {
+  animation: floatObjectives 1.8s ease-in-out infinite;
+  filter: drop-shadow(0 2px 8px rgba(110, 165, 108, 0.18));
+}
+
+.stage {
+  animation: floatStage 2s ease-in-out infinite;
+  filter: drop-shadow(0 2px 8px rgba(110, 165, 108, 0.18));
+}
+
+.knob {
+  animation: pulseKnob 1.6s ease-in-out infinite;
+  transform-origin: center;
+  filter: drop-shadow(0 2px 8px rgba(110, 165, 108, 0.18));
+}
+
+.loading {
+  margin-top: 12px;
+  font-size: 24px;
+  font-weight: 700;
+  font-family: 'Nunito', sans-serif;
+  color: #2D5016;
+  letter-spacing: 0.75px;
+}
+
+.loading::after {
+  display: inline-block;
+  width: 24px;
+  text-align: left;
+  animation: loadingDots 1.5s steps(4) infinite;
+  content: "";
+}
