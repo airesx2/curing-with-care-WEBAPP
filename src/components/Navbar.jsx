@@ -33,7 +33,7 @@ export default function Navbar() {
 
         {/* Logo */}
         <div className="text-green-900 font-serif text-lg tracking-widest uppercase whitespace-nowrap">
-          curingwithCARE Blog
+          CARE Blog
         </div>
 
         {/* Links + Profile */}

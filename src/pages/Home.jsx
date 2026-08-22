@@ -108,7 +108,7 @@ export default function Home() {
 
         <div className="mb-16 text-center">
           <h1 className="text-4xl font-serif font-bold tracking-wide text-[#32567F] mb-4 leading-tight">
-            curingwithCARE
+            Curing With CARE Blog: Beyond Cancer
           </h1>
           <p className="text-muted-foreground max-w-2xl mx-auto font-serif">
             Empowering students to explore cancer research, prevention,
